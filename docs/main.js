@@ -773,7 +773,7 @@ __webpack_require__.r(__webpack_exports__);
 class MovieApiService {
   constructor(http) {
     this.http = http;
-    this.baseurl = "http://www.omdbapi.com";
+    this.baseurl = "https://www.omdbapi.com";
     this.apikey = "a2d3d680"; // Replace with your actual API key
   }
   // bannerapidata

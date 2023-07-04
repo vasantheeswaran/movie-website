@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class MovieApiService {
   constructor(private http: HttpClient) { }
 
-  baseurl = "http://www.omdbapi.com";
+  baseurl = "https://www.omdbapi.com";
   apikey = "a2d3d680"; // Replace with your actual API key
 
   // bannerapidata
