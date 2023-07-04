@@ -1,0 +1,140 @@
+<nav class="navbar navbar-expand-lg fixed-top" [ngStyle]="navbg">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">MOVIEBUFF</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <form [formGroup]="searchForm" (ngSubmit)="submitForm()" class="d-flex flex-wrap">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" formControlName="movieName"
+                            placeholder="Search Movie Here ...">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="contain mt-5 p-5" style="display: flex;
+  align-items: center;">
+    <div class="form-group">
+        <label for="genre" class="form-label">Genre:</label>
+        <select id="genre" class="form-control" [(ngModel)]="selectedGenre">
+            <option value="">Any Genre</option>
+            <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="rating" class="form-label">Rating:</label>
+        <select id="rating" class="form-control" [(ngModel)]="selectedRating">
+            <option value="">Any Rating</option>
+            <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="year" class="form-label">Year:</label>
+        <input id="year" class="form-control" type="number" [(ngModel)]="selectedYear" placeholder="Year">
+    </div>
+
+    <div class="form-group mt-4">
+        <button class="btn btn-primary form-control" (click)="applyFilters()">Filter</button>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div *ngIf="errorMessage || searchResult===0" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-6 col-sm-10 mb-2" *ngFor="let movie of searchResult">
+            <div class="card h-100">
+                <img class="card-img-top" *ngIf="movie.Poster !== 'N/A'" src="{{ movie.Poster }}"
+                    [routerLink]="['/movie', movie.imdbID]" alt="Movie Poster">
+                <div class="card-body">
+                    <p class="card-title">{{ movie.Title }}</p>
+                    <p class="card-text">Year: {{ movie.Year }}</p>
+                    <p class="card-text">Type: {{ movie.Type}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contain mt-3 mb-5 p-4">
+    <!-- action movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Action Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let a of actionMovieResult">
+                <img src="{{ a.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', a.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- adventure movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Adventure Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let a of adventureMovieResult">
+                <img src="{{ a.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', a.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- animation movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Animation Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let a of animationMovieResult">
+                <img src="{{ a.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', a.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- comedy movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Comedy Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let c of comedyMovieResult">
+                <img src="{{ c.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', c.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- documentary movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Documentary Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let d of documentaryMovieResult">
+                <img src="{{ d.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', d.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- science-fiction movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Science-Fiction Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let sf of sciencefictionMovieResult">
+                <img src="{{ sf.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', sf.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- thriller movies  -->
+    <div class="row mt-4">
+        <h5 class="text-white">Thriller Movies</h5>
+        <div class="rowposter mt-3 p-2">
+            <ng-container *ngFor="let th of thrillerMovieResult">
+                <img src="{{ th.Poster }}" class="rowimg largeposter" alt="..." [routerLink]="['/movie', th.imdbID]">
+            </ng-container>
+        </div>
+    </div>
+</div>

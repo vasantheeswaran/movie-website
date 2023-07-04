@@ -1,0 +1,76 @@
+
+.rowposter{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.rowimg
+{
+    max-height: 100px;
+    object-fit: contain;
+    width: 100%;
+    box-sizing: content-box;
+    transition: transform 450ms;
+    margin-right: 7px;
+}
+
+.rowimg:hover
+{
+    transform: scale(1.09);
+    cursor: pointer;
+}
+
+.largeposter{
+    max-height: 300px;
+}
+
+.rowposter::-webkit-scrollbar
+{
+    display: none;
+}
+button
+{
+    background-color: #E50914;
+    color: #ffffff;
+}
+
+button:hover
+{
+    background-color: #E50914;
+    color: #ffffff;
+}
+
+img{
+    width: 100%;
+    cursor: pointer;
+}
+
+h5
+{
+    color: #ffffff;
+}
+
+.form-group {
+  margin-right: 5px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+.navbar .navbar-brand
+{
+    color: #E50914;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item .nav-link
+{
+    color: #E50914;
+}
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
